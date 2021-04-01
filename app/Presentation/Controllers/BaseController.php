@@ -2,6 +2,7 @@
 
 namespace App\Presentation\Controllers;
 
+use App\Core\Config\ConfigurationRepositoryInterface;
 use App\Core\Exceptions\ActionNotFoundException;
 use App\Core\Exceptions\BaseException;
 use App\Presentation\Views\AbstractView;
@@ -10,8 +11,15 @@ class BaseController
 {
     protected AbstractView $view;
 
-    public function __construct(AbstractView $view) {
+    protected ConfigurationRepositoryInterface $configuration;
+
+    public function __construct(
+        AbstractView $view,
+        ConfigurationRepositoryInterface $configuration
+    ) {
         $this->view = $view;
+        $this->configuration = $configuration;
+        $this->view->setTemplateDirectory($this->configuration->getConfiguration()->getTemplateDir());
     }
 
     /**
@@ -28,7 +36,7 @@ class BaseController
         try {
             $function();
         } catch(BaseException $ex) {
-//            $this->onError($ex);
+            // TODO Implement catch logic
         }
     }
 }

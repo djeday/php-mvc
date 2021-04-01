@@ -2,22 +2,19 @@
 
 namespace App\Presentation\Views;
 
-use App\Core\Config\Configuration;
-
 class View implements AbstractView
 {
     private array $data;
 
-    private Configuration $systemConfiguration;
+    private string $templateDirectory;
 
-    public function __construct(Configuration $systemConfiguration)
-    {
-        $this->systemConfiguration = $systemConfiguration;
+    public function setTemplateDirectory(string $templateDirectory) {
+        $this->templateDirectory = $templateDirectory;
     }
 
     public function render(string $template = null)
     {
-        $templateFile = dirname(__DIR__, 3) . $this->systemConfiguration->getTemplateDir(). $template . '.php';
+        $templateFile = dirname(__DIR__, 3) . $this->templateDirectory. $template . '.php';
         if (is_null($template)) {
             exit(implode($this->data));
         }
