@@ -45,7 +45,7 @@ class Router
     {
         $routeInfo = $this->match();
         if ($routeInfo != null) {
-            $controller = ControllerFactory::instance($routeInfo->getController());
+            $controller = ControllerFactory::create($routeInfo->getController());
             $action = $routeInfo->getAction();
             $args = $routeInfo->getParams();
             call_user_func_array(array($controller, $action), $args);
