@@ -7,12 +7,8 @@ use App\Presentation\Controllers\PostController;
 $dotenv = Dotenv::createUnsafeImmutable(dirname(__DIR__));
 $dotenv->load();
 
-function exception_handler(Throwable $ex) {
-    // TODO Handler exception
-    $error_code = $ex->getCode() ?? 500;
-    header("HTTP/2 ". $error_code);
-}
-set_exception_handler('exception_handler');
+set_error_handler('App\Utils\ErrorUtil::errorHandler', E_ALL);
+set_exception_handler('App\Utils\ErrorUtil::exceptionHandler');
 
 $router = RouterFactory::create();
 $router->addRoute('/posts/all', PostController::class, 'getAllPosts');
