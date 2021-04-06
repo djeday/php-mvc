@@ -4,6 +4,8 @@ namespace App\Presentation\Controllers;
 
 use App\Core\Config\ConfigurationFactory;
 use App\Core\Exceptions\ControllerNotFoundException;
+use App\Data\Repository\PostRepository;
+use App\Data\Storage\ArrayStorage;
 use App\Presentation\Views\ViewFactory;
 use ReflectionClass;
 use ReflectionException;
@@ -32,7 +34,8 @@ class ControllerFactory
     {
         $view = ViewFactory::create();
         $configurationRepository = ConfigurationFactory::create();
+        $postRepository = new PostRepository(new ArrayStorage());
 
-        return new $class($view, $configurationRepository);
+        return new $class($view, $configurationRepository, $postRepository);
     }
 }

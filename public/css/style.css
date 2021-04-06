@@ -1,3 +1,117 @@
 body {
-    color: red;
+    background-color: #F4F5F5;
+    width: 800px;
+    margin: 0 auto;
+    text-align: center;
+    padding-top: 20px;
+}
+
+/**
+HEADER
+*/
+
+header, #main-container {
+    width: 600px;
+    padding: 10px;
+    margin: 0 auto;
+}
+
+.header-img img {
+    height: 200px;
+}
+
+/**
+MAIN
+*/
+
+h1 {
+    text-align: center;
+}
+
+#main-container {
+    background-color: #28C989;
+    border-radius: 0 0 16px 16px;
+    text-align: center;
+}
+
+/**
+BUTTON
+*/
+.submit-button {
+    text-align: center;
+}
+
+.button {
+    width: 45%;
+    font-size: 16px;
+    font-weight: bold;
+    cursor: pointer;
+    background-color: #bd0419;
+    border: none;
+    color: #fff;
+    border-radius: 12px;
+    text-decoration: none;
+    outline: none;
+    padding: 12px;
+}
+.button:hover {
+    background-color: #950314;
+}
+
+.button:active {
+    background-color: #950314;
+    transform: translateY(1px);
+}
+
+.form-group {
+    padding: 15px;
+}
+
+.input-field {
+    padding: 10px;
+}
+
+.label {
+    text-align: left;
+    display: inline-block;
+}
+
+.login-label {
+    width: 60px;
+}
+
+.register-label {
+    width: 250px;
+    font-weight: bold;
+}
+
+/**
+FOOTER
+*/
+footer {
+    margin-top: 25px;
+}
+
+
+/**
+NAVIGATION
+*/
+ul.navbar {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+}
+
+.nav-item {
+    padding: 10px;
+    display: inline-block;
+}
+
+a.nav-link {
+    text-decoration: none;
+    font-size: 1.5em;
+}
+
+a.nav-link:hover {
+    color: black;
 }
