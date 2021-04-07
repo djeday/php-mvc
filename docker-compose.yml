@@ -10,6 +10,11 @@ services:
       - "8080:80"
     depends_on:
     - php-fpm
+    healthcheck:
+      test: curl -I ${HEALTHCHECK_URL}
+      interval: 30s
+      timeout: 10s
+      retries: 2
   php-fpm:
     build: docker/php
     volumes:
@@ -21,7 +26,7 @@ services:
     ports:
     - 3307:3306
     environment:
-      DB_HOST: mysql
+      DB_HOST: ${DB_HOST}
       DB_PORT: 3306
-      MYSQL_DATABASE: mysql
-      MYSQL_ROOT_PASSWORD: password
+      MYSQL_DATABASE: ${DB_DATABASE}
+      MYSQL_ROOT_PASSWORD: ${DB_PASSWORD}
