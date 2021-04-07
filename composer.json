@@ -3,7 +3,10 @@
 	"description": "MVC framework",
 	"require": {
 		"symfony/http-foundation": "^5.2",
-		"vlucas/phpdotenv": "^5.3"
+		"vlucas/phpdotenv": "^5.3",
+		"ext-pdo": "*",
+		"doctrine/orm": "^2.6.2",
+		"symfony/yaml": "2.*"
 	},
 	"require-dev": {
 		"phpunit/phpunit": "9.*"
