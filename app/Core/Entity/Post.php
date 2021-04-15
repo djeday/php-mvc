@@ -2,28 +2,49 @@
 
 namespace App\Core\Entity;
 
+use Doctrine\ORM\Mapping as ORM;
+
+/**
+ * @ORM\Entity
+ * @ORM\Table(name="posts")
+ */
 class Post
 {
-    private int $id;
+    /**
+     * @ORM\Id
+     * @ORM\Column(type="integer")
+     * @ORM\GeneratedValue
+     */
+    protected int $id;
 
-    private string $userId;
+    /**
+     * @ORM\Column(type="string", name="user_id")
+     */
+    protected int $userId;
 
-    private string $title;
+    /**
+     * @ORM\Column(type="string", length=1024)
+     */
+    protected string $title;
 
-    private string $date;
+    /**
+     * @ORM\Column(type="datetime")
+     */
+    protected string $date;
 
-    private string $image;
+    /**
+     * @ORM\Column(type="string", length=1024)
+     */
+    protected string $image;
 
-    private string $text;
+    /**
+     * @ORM\Column(type="text")
+     */
+    protected string $text;
 
     public function getId(): int
     {
         return $this->id;
-    }
-
-    public function setId(int $id): void
-    {
-        $this->id = $id;
     }
 
     public function getUserId(): string

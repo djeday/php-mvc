@@ -1,4 +1,4 @@
-version: "3"
+version: "3.3"
 services:
   nginx:
     image: nginx
@@ -9,7 +9,7 @@ services:
     ports:
       - "8080:80"
     depends_on:
-    - php-fpm
+      - php-fpm
     healthcheck:
       test: curl -I ${HEALTHCHECK_URL}
       interval: 30s
@@ -22,11 +22,23 @@ services:
     depends_on:
       - mysql
   mysql:
-    image: mysql
+    image: mysql:latest
+    restart: always
     ports:
     - 3307:3306
+#    volumes:
+#      - .docker/data/db:/var/lib/mysql
     environment:
-      DB_HOST: ${DB_HOST}
-      DB_PORT: 3306
-      MYSQL_DATABASE: ${DB_DATABASE}
+#      MYSQL_DATABASE: mysql
+#      MYSQL_ROOT_HOST: '%'
+      MYSQL_ROOT_PASSWORD: ${DB_PASSWORD}
+  phpmyadmin:
+    depends_on:
+      - mysql
+    image: phpmyadmin/phpmyadmin
+    restart: always
+    ports:
+      - "8082:80"
+    environment:
+      PMA_HOST: ${DB_HOST}
       MYSQL_ROOT_PASSWORD: ${DB_PASSWORD}

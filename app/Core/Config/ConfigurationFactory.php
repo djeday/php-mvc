@@ -4,7 +4,7 @@ namespace App\Core\Config;
 
 class ConfigurationFactory
 {
-    public static ConfigurationRepository $instance;
+    private static ConfigurationRepository $instance;
 
     private function __clone()
     {

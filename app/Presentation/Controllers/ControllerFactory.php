@@ -15,8 +15,7 @@ class ControllerFactory
     /**
      * @param string $class
      * @return AbstractController
-     * @throws ControllerNotFoundException
-     * @throws ReflectionException
+     * @throws ReflectionException | ControllerNotFoundException
      */
     public static function create(string $class): AbstractController
     {
